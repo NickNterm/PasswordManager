@@ -1,0 +1,124 @@
+:root {
+    --black: #302B27;
+    --white: #F5F3F5;
+    --openblue: #576CA8;
+    --darkblue: #1B264F;
+    --blue: #274690;
+}
+
+body {
+    background-image: url('bg-hacker.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+form {
+    border: 2px solid var(--darkblue);
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    width: 450px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -10;
+}
+
+input {
+    border: solid 0px;
+    border-radius: 10px;
+    color: #000;
+    background: none;
+    transition: 0.8s;
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+    display: inline-block;
+    border: 3px solid var(--darkblue);
+    box-sizing: border-box;
+    font-family: 'Courier New';
+}
+
+.container {
+    padding: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 3px solid var(--darkblue);
+    color: #000;
+    border-radius: 10px;
+    background: #576CA8;
+    font-size: 16px;
+    font-family: "Courier New";
+    cursor: pointer;
+    transition: 0.8s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    color: #fff;
+    background: var(--darkblue);
+}
+
+.nikolas {
+    margin-top: 10px;
+    color: #00a2e2;
+    font-family: "Courier New";
+    font-size: 13px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.powertext {
+    margin-top: 10px;
+    font-family: "Courier New";
+    text-align: right;
+    font-size: 13px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.alert {
+    background-color: #f5533d;
+    border: 1px solid #f5533d;
+    border-radius: 10px;
+}
+
+.alerttext {
+    margin: 5px;
+}
+
+img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top-color: currentcolor;
+    border-top-style: none;
+    border-top-width: 0px;
+    border-top: 1px solid var(--darkblue);
+}
