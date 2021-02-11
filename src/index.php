@@ -1,28 +1,28 @@
 <?php
-$link = mysqli_connect('localhost', 'admin', 'admin', 'LocalWebSite');
-if (!$link) {
-    echo "<h2>MySQL Error!</h2>";
-    exit;
-}
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "LocalWebSite";
+$conn = new mysqli($servername, $username, $password, $dbname);
 $user = $_POST['Username'];
-settype($user, "string"); 
-$user = str_replace("'","\"",$user);
+settype($user, "string");
+$user = str_replace("'", "\"", $user);
 $pass = $_POST['Password'];
-settype($pass, "string"); 
-$pass = str_replace("'","\"",$pass);
-$db = "LocalWebSite";
-mysqli_select_db($link, $db);
-$q = mysqli_query($link, "SELECT * FROM Login WHERE username = '$user' AND password = '$pass';");
-if (mysqli_num_rows($q)!=0) {
-    echo "connected     ";
-}else{
-    echo "wrong credits ";
+settype($pass, "string");
+$pass = str_replace("'", "\"", $pass);
+if ($user != null) {
+    $sql = "SELECT * FROM Login WHERE username = '$user';";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+          $salt = $row["salt"];
+          if(hash('sha256', $salt.$pass, false) === $row["password"]){
+            echo "Connected";
+          }
+        }
+      }
 }
-echo mysqli_num_rows($q);
-echo "      Username: ";
-echo $user;
-echo "    Password: ";
-echo $pass;
 ?>
 
 <link rel="stylesheet" href="loginstyle.css">
@@ -39,7 +39,7 @@ echo $pass;
             <input type="text" name="Username" placeholder="Enter Username" required>
             <input type="password" name="Password" placeholder="Enter Password" required>
             <button class="btn" type="submit">Login</button>
-            <a unselectable="on"  href="register.php">Sign up</a>
+            <a unselectable="on" class="nikolas" href="register.php">Sign up</a>
         </div>
     </form>
 

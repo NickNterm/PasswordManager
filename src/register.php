@@ -1,9 +1,11 @@
 <?php
-$link = mysqli_connect('localhost', 'admin', 'admin', 'LocalWebSite');
-if (!$link) {
-    echo "<h2>MySQL Error!</h2>";
-    exit;
-}
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "LocalWebSite";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 $user = $_POST['Username'];
 settype($user, "string");
 $user = str_replace("'", "\"", $user);
@@ -13,13 +15,18 @@ $pass = str_replace("'", "\"", $pass);
 $pass2 = $_POST['Password2'];
 settype($pass2, "string");
 $pass2 = str_replace("'", "\"", $pass);
-$db = "LocalWebSite";
-mysqli_select_db($link, $db);
-$q = mysqli_query($link, "INSERT INTO table_name (column1, column2, column3,...) VALUES (value1, value2, value3,...) ");
-if (mysqli_num_rows($q) != 0) {
-    echo "connected     ";
-} else {
-    echo "wrong credits ";
+if (($pass === $pass2) && ($pass != null)) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $salt = '';
+    for ($i = 0; $i < 8; $i++) {
+        $salt .= $characters[rand(0, $charactersLength - 1)];
+    }
+    $hashedpass = hash('sha256', $salt . $pass, false);
+    $sql = "INSERT INTO Login (username, password, salt)  VALUES ('$user', '$hashedpass', '$salt')";
+    if ($conn->query($sql) === TRUE) {
+        header('Location: /');
+    }
 }
 echo mysqli_num_rows($q);
 echo "      Username: ";
