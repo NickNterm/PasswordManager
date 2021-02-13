@@ -28,11 +28,6 @@ if (($pass === $pass2) && ($pass != null)) {
         header('Location: /');
     }
 }
-echo mysqli_num_rows($q);
-echo "      Username: ";
-echo $user;
-echo "    Password: ";
-echo $pass;
 ?>
 
 <link rel="stylesheet" href="loginstyle.css">
@@ -61,7 +56,6 @@ echo $pass;
             ?>
         </div>
     </form>
-
 </body>
 
 </html>

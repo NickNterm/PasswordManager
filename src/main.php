@@ -78,7 +78,15 @@ if (($user != null) && ($pass != null) && ($userid != null)) {
                                     echo "<td>" . $rowdata['password'] . "</td>";
                                     echo "<td>" . $rowdata['email'] . "</td>";
                                     echo "<td>" . $rowdata['otherdata'] . "</td>";
-                                    echo "<td> <span style=\"font-size:30px;cursor:pointer\" onclick=\"openNav()\">&#10005;</span></td></tr>";
+                                    echo "<td> <form method=\"post\" style=\"margin-bottom: 0px;\"> <input type=\"submit\" style=\"font-size:30px;cursor:pointer\" value = \"&#10005;\" class=\"inputbutton\" name=\"button" . $rowdata['id'] . "\"></input></form></td></tr>";
+                                    if (isset($_POST['button' . $rowdata['id']])) {
+                                        $sql3 = "DELETE FROM Data WHERE id = ".$rowdata['id'].";";
+                                        if ($conn->query($sql3) === TRUE) {
+                                            header("Location: formhandler.php");
+                                        }else{
+                                            echo $conn->error;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -90,11 +98,11 @@ if (($user != null) && ($pass != null) && ($userid != null)) {
         }
         ?>
         <form action="logedin" method="get">
-            <td><input type="text" name="Platfrom" placeholder="Enter Platfrom name"></td>
-            <td><input type="text" name="Username" placeholder="Enter Username"></td>
-            <td><input type="text" name="Password" placeholder="Enter Password"></td>
-            <td><input type="text" name="Email" placeholder="Enter Email"></td>
-            <td><input type="text" name="OtherData" placeholder="Add Extra Data"></td>
+            <td><input type="text" class="addinput" name="Platfrom" placeholder="Enter Platfrom name"></td>
+            <td><input type="text" class="addinput" name="Username" placeholder="Enter Username"></td>
+            <td><input type="text" class="addinput" name="Password" placeholder="Enter Password"></td>
+            <td><input type="text" class="addinput" name="Email" placeholder="Enter Email"></td>
+            <td><input type="text" class="addinput" name="OtherData" placeholder="Add Extra Data"></td>
             <td><button class="btn" type="submit">Add</button></td>
         </form>
 
