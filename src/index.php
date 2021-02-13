@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
@@ -18,7 +19,10 @@ if ($user != null) {
         while($row = $result->fetch_assoc()) {
           $salt = $row["salt"];
           if(hash('sha256', $salt.$pass, false) === $row["password"]){
-            echo "Connected";
+            $_SESSION['password'] = $pass;
+            $_SESSION['username'] = $user;
+            $_SESSION['salt'] = $salt;
+            header("Location: /logedin");
           }
         }
       }
@@ -39,7 +43,7 @@ if ($user != null) {
             <input type="text" name="Username" placeholder="Enter Username" required>
             <input type="password" name="Password" placeholder="Enter Password" required>
             <button class="btn" type="submit">Login</button>
-            <a unselectable="on" class="nikolas" href="register.php">Sign up</a>
+            <a unselectable="on" class="nikolas" href="signup">Sign up</a>
         </div>
     </form>
 
