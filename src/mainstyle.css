@@ -12,15 +12,16 @@ body {
 
 .Add {
     display: none;
-    width: 100%;
 }
 
 input {
-    border: solid 0px;
-    border-radius: 10px;
+    border-radius: 3px;
     color: #000;
+    width: auto;
     background: none;
-    transition: 0.8s;
+    padding: 5px 5px 5px 5px;
+    font-family: "Lato", sans-serif;
+    border: 1px solid var(--darkblue);
 }
 
 th,

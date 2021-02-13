@@ -4,6 +4,10 @@ $servername = "localhost";
 $username = "admin";
 $password = "admin";
 $dbname = "LocalWebSite";
+$_SESSION['password'] = null;
+$_SESSION['username'] = null;
+$_SESSION['salt'] = null;
+$_SESSION['userid'] = null;
 $conn = new mysqli($servername, $username, $password, $dbname);
 $user = $_POST['Username'];
 settype($user, "string");
@@ -12,20 +16,20 @@ $pass = $_POST['Password'];
 settype($pass, "string");
 $pass = str_replace("'", "\"", $pass);
 if ($user != null) {
-    $sql = "SELECT * FROM Login WHERE username = '$user';";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-          $salt = $row["salt"];
-          if(hash('sha256', $salt.$pass, false) === $row["password"]){
-            $_SESSION['password'] = $pass;
-            $_SESSION['username'] = $user;
-            $_SESSION['salt'] = $salt;
-            header("Location: /logedin");
-          }
-        }
+  $sql = "SELECT * FROM Login WHERE username = '$user';";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+      $salt = $row["salt"];
+      if (hash('sha256', $salt . $pass, false) === $row["password"]) {
+        $_SESSION['password'] = $pass;
+        $_SESSION['username'] = $user;
+        $_SESSION['salt'] = $salt;
+        header("Location: /logedin");
       }
+    }
+  }
 }
 ?>
 
@@ -33,19 +37,19 @@ if ($user != null) {
 <html>
 
 <body>
-    <form action="" method="post">
-        <div class="container">
-            <div>
-                <img src="logo.png">
-                <p class="powertext">Powered by <a class="nikolas" href="https://github.com/NickNterm">Nikolas Ntermaris</a></p>
-            </div>
-            <hr>
-            <input type="text" name="Username" placeholder="Enter Username" required>
-            <input type="password" name="Password" placeholder="Enter Password" required>
-            <button class="btn" type="submit">Login</button>
-            <a unselectable="on" class="nikolas" href="signup">Sign up</a>
-        </div>
-    </form>
+  <form action="" method="post">
+    <div class="container">
+      <div>
+        <img src="logo.png">
+        <p class="powertext">Powered by <a class="nikolas" href="https://github.com/NickNterm">Nikolas Ntermaris</a></p>
+      </div>
+      <hr>
+      <input type="text" name="Username" placeholder="Enter Username" required>
+      <input type="password" name="Password" placeholder="Enter Password" required>
+      <button class="btn" type="submit">Login</button>
+      <a unselectable="on" class="nikolas" href="signup">Sign up</a>
+    </div>
+  </form>
 
 </body>
 
