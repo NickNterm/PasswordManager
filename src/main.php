@@ -98,9 +98,9 @@ if (($user != null) && ($pass != null) && ($userid != null)) {
         }
         ?>
         <form action="logedin" method="get">
-            <td><input type="text" class="addinput" name="Platfrom" placeholder="Enter Platfrom name"></td>
-            <td><input type="text" class="addinput" name="Username" placeholder="Enter Username"></td>
-            <td><input type="text" class="addinput" name="Password" placeholder="Enter Password"></td>
+            <td><input type="text" class="addinput" name="Platfrom" placeholder="Enter Platfrom name" required></td>
+            <td><input type="text" class="addinput" name="Username" placeholder="Enter Username" required></td>
+            <td><input type="text" class="addinput" name="Password" placeholder="Enter Password" required></td>
             <td><input type="text" class="addinput" name="Email" placeholder="Enter Email"></td>
             <td><input type="text" class="addinput" name="OtherData" placeholder="Add Extra Data"></td>
             <td><button class="btn" type="submit">Add</button></td>
