@@ -14,8 +14,8 @@ settype($pass, "string");
 $pass = str_replace("'", "\"", $pass);
 $pass2 = $_POST['Password2'];
 settype($pass2, "string");
-$pass2 = str_replace("'", "\"", $pass);
-if (($pass === $pass2) && ($pass != null)) {
+$pass2 = str_replace("'", "\"", $pass2);
+if ($pass == $pass2 && $pass != null) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $salt = '';
@@ -34,7 +34,7 @@ if (($pass === $pass2) && ($pass != null)) {
 <html>
 
 <body>
-    <form action="" method="post">
+    <form action="signup" method="post">
         <div class="container">
             <div>
                 <img src="logo.png">
@@ -43,7 +43,7 @@ if (($pass === $pass2) && ($pass != null)) {
             <hr>
             <input type="text" name="Username" placeholder="Enter Username" required>
             <input type="password" name="Password" placeholder="Enter Password" required>
-            <input type="password" name="Password2" placeholder="re-enter Password" required>
+            <input type="password" name="Password2" placeholder="Re-enter Password" required>
             <button class="btn" type="submit">Sign up</button>
             <?php
             $pass = $_POST['Password'];

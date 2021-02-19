@@ -72,3 +72,19 @@ Last enable the rewrite in the apache by using the command:
 ```
 sudo a2enmod rewrite
 ```
+# Step 8 
+So in this step we are going to make our site globaly reachable cause now you see it only when you are connected to the same wifi. To do that first we have to change the port that the apache server is Listening. To do that edit the file:
+```
+sudo nano /etc/apache2/ports.conf
+```
+And change the line from:
+```
+Listen 80
+```
+To:
+```
+Listen 7575
+```
+Aftrer restarting the server by ``` sudo service apache2 restart ``` you can see that the site is reachable anymore. that why we change the port its sending the site. In the domain that we previously seeing the site we have to add a ":7575" (example: 192.168.51.109:7575).
+# Step 9
+This step is all about port forwarding the raspberry pi port. You can do that by going to your router settings and set the port to forward. Plus you have to make the raspberry's ip static cause after each reset the router is going to give another ip to raspberry. To do that edit the file ```sudo nano /etc/dhcpcd.conf``` accordingly.
