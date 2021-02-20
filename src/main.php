@@ -36,7 +36,7 @@ if (($user != null) && ($pass != null) && ($userid != null)) {
 <body>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/">Log out</a>
+        <a href="log_in">Log out</a>
         <a href="https://github.com/NickNterm">Github</a>
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
