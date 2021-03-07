@@ -25,7 +25,7 @@ if ($pass == $pass2 && $pass != null) {
     $hashedpass = hash('sha256', $salt . $pass, false);
     $sql = "INSERT INTO Login (username, password, salt)  VALUES ('$user', '$hashedpass', '$salt')";
     if ($conn->query($sql) === TRUE) {
-        header('Location: ');
+        header('Location: log_in');
     }
 }
 ?>
