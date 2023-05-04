@@ -1,5 +1,8 @@
 # PasswordManager
 This project is made for a raspberry pi so you can connect to it through it's local ip and see the website. The idea is that you can store your passwords in this site so you dont have to remember them or write them down in a paper
+
+Some years later Update. It was a nice project. Useful. May be bad, unsafe, ugly but i still use it. Its like the paper that everyone has with his passwords. I do it in my website. Huge flex
+
 # Step 1
 Use raspberry pi imager in order to pass the software in the raspberry.
 # Step 2
